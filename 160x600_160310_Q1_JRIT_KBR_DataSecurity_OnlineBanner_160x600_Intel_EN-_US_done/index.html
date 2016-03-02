@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>160x600</title>
+<meta name="ad.size" content="width=160,height=600">
+<script>
+	var clickTag = 'https://www.google.com';
+</script>
+<style>
+body{
+	margin:0;
+	padding:0;
+}
+#container{
+	position:relative;
+	border: 1px solid #666;
+	width:158px;
+	height:598px;
+	overflow:hidden;
+}
+#bg{
+	position:absolute;
+	background: url(bg.jpg) no-repeat;
+	width: 395px;
+	height: 1482px;
+	top: -282px;
+	left: -127px;
+}
+#mask{
+	position: absolute;
+	width: 160px;
+	height: 221px;
+	background: url(mask.png) no-repeat;
+	top: -100px;
+	left: 0;
+}
+#ef{
+	position: absolute;
+	width: 160px;
+	height: 600px;
+	left: 0;
+	top: 0;
+	background: url(ef.png) no-repeat;
+	opacity:0;
+}
+.copy{
+	position: absolute;
+	top:0;
+	width:160px;
+	height:600px;
+	left: 0;
+	display: block;
+	background: url(copy.png) no-repeat;
+	opacity: 0;
+}
+#c1{
+	opacity: 1;
+	background-position: 0 0;
+}
+#c2{
+	background-position: -160px 0;
+}
+#c3{
+	background-position: -320px 0;
+}
+#c4{
+	background-position: -480px 0;
+}
+#c5{
+	background-position: -640px 0;
+}
+#cta{
+	position: absolute;
+	background: url(cta.png) no-repeat;
+	left: 11px;
+	top: 340px;
+	opacity: 0;
+	width: 135px; 
+	height: 31px;
+}
+#replay{
+	position: absolute;
+	width: 9px;
+	height: 10px;
+	background: url(replay.png) no-repeat;
+	opacity: 0;
+	bottom: 10px;
+	right: -20px;
+	cursor: pointer;
+}
+#clicktag{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:160px;
+	height:600px;
+	cursor: pointer;
+}
+#logo{
+	background-position: 0 -600px;
+	opacity: 1;
+}
+.grad{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:160px;
+	height:600px;
+	background: url(grad.png) no-repeat;
+}
+.part-logo{
+background:  url(partnerlogo.png) no-repeat;        
+}
+    
+div#part-logo {
+  position: absolute;
+  top: 80px;
+  left: 11px;
+  padding: 0px;
+  margin: 0px;
+  /* z-index: 999; */
+  opacity: 0;
+  border: 1px solid red;
+  width: 58px;
+  height: 40px;
+}          
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+</head>
+<body onLoad="playBanner()">
+	
+	<div id="container">
+	    <div id="bg"></div>
+		<div id="mask"></div>
+		<div class="grad"></div>
+        <div id="c1" class="copy"></div>
+        <div id="c2" class="copy"></div>
+        <div id="c3" class="copy"></div>
+        <div id="c4" class="copy"></div>
+		<div id="c5" class="copy"></div>
+        <div id="ef"></div>
+        <div id="logo" class="copy"></div>
+        <div id="part-logo" class="part-logo"></div>
+        <div id="cta"></div>
+        <div id="clicktag" onclick="javascript:window.open(window.clickTag)">&nbsp;</div>
+        <div id="replay"></div>    
+	</div>
+
+<script>
+var tl = new TimelineMax({paused: true});
+   
+tl
+
+.to('#c1', 0.5, { opacity: 0 }, '+=3')
+.to('#c2', 0.5, { opacity: 1 })
+.to('#c2', 0.5, { opacity: 0 }, '+=3')
+.to('#bg', 6, {scale:.45, x:8, y:-157, ease: Power2.easeInOut, force3D:true}, '-=2')
+.to('#c3', 0.5, { opacity: 1 }, '-=1')
+.to('#c3', 0.5, { opacity: 0}, '+=2.5')
+.to('#c4', 0.5, { opacity: 1 })
+.to('#c4', 0.5, { opacity: 0 }, '+=2.5')
+.to('#c5', 0.5, { opacity: 1 })
+.set('#replay', { right: 10 }, '+=2.5')
+.to('#ef', 0.5, { opacity: 1 })
+.to('#part-logo', 0.5, {opacity: 1}, '-=0.5' )
+.to('#cta', 0.5, { opacity: 1 }, '-=0.5')
+.to('#replay', 0.5, { opacity: 1 }, '-=0.5')
+
+;
+
+function playBanner(){
+	tl.play();
+}
+	
+function replayPressed(){
+	tl.restart();
+}
+
+document.getElementById('replay').addEventListener('click', replayPressed);
+</script>
+</body>
+</html>
